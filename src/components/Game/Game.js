@@ -1,6 +1,8 @@
-function Game({ makeChoice }) {
+// could pass down Object.keys(rules) as choices prop?
+
+function Game({ decideGame }) {
   const handleClick = event => {
-    makeChoice(event.target.dataset.id);
+    decideGame(event.target.dataset.id);
   };
 
   return (
