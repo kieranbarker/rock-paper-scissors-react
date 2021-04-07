@@ -11,27 +11,44 @@ const rules = {
   scissors: 'paper'
 };
 
+const storageKey = 'rpsScore';
+
 class App extends React.Component {
   state = {
     user: null,
     computer: shuffle(Object.keys(rules))[0],
-    result: null
+    result: null,
+    score: 0
+  }
+
+  componentDidMount() {
+    let score = localStorage.getItem(storageKey);
+    if (!score) return;
+    score = parseInt(score, 10);
+    this.setState({ score });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(storageKey, this.state.score);
   }
 
   decideGame = user => {
-    const { computer } = this.state;
-    let result;
+    const { computer, score } = this.state;
+    let result, newScore;
   
     if (user === computer) {
       result = 'draw';
+      newScore = score;
     } else if (rules[user] === computer) {
       result = 'win';
+      newScore = score + 1;
     } else {
       result = 'lose';
+      newScore = score - 1;
     }
 
 
-    this.setState({ user, result });
+    this.setState({ user, result, score: newScore });
   }
 
   reset = () => {
@@ -43,7 +60,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { user, computer, result } = this.state;
+    const { user, computer, result, score } = this.state;
     let screen;
 
     if (result) {
@@ -61,7 +78,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header />
+        <Header score={score} />
         {screen}
       </div>
     );

@@ -15,7 +15,7 @@ function Results({ user, computer, result, reset }) {
     <div className="Results">
       {heading}
       <p>You picked: <b>{user}</b></p>
-      <p>The computer picked: <b>{computer}</b></p>
+      <p>Computer picked: <b>{computer}</b></p>
       <button type="button" onClick={reset}>New Game</button>
     </div>
   );
