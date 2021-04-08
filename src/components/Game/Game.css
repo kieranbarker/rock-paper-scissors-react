@@ -1,0 +1,42 @@
+.game {
+  width: 330px;
+  margin: 4em auto 0;
+  background-image: url('/src/images/triangle.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+}
+
+.game__button {
+  width: 130px;
+  height: 130px;
+  border: 1em solid;
+  border-radius: 100%;
+  margin: 1em;
+  background: var(--light-bg);
+  box-shadow: inset 0 .5em 0 var(--light-shadow);
+}
+
+.game__button--rock {
+  border-color: var(--rock);
+}
+
+.game__button--paper {
+  border-color: var(--paper);
+}
+
+.game__button--scissors {
+  border-color: var(--scissors);
+}
+
+@media (min-width: 48em) {
+  .game {
+    width: 495px;
+  }
+
+  .game__button {
+    width: 195px;
+    height: 195px;
+    border-width: 1.5em;
+  }
+}
