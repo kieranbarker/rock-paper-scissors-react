@@ -6,16 +6,16 @@ function Results({ user, computer, result, reset }) {
   let heading;
 
   if (result === 'win') {
-    heading = <h2 className="results__heading">You Win</h2>;
+    heading = 'You Win';
   } else if (result === 'lose') {
-    heading = <h2 className="results__heading">You Lose</h2>;
+    heading = 'You Lose';
   } else if (result === 'draw') {
-    heading = <h2 className="results__heading">Draw</h2>;
+    heading = 'Draw';
   }
 
   return (
     <div className="results">
-      {heading}
+      <h2 className="results__heading">{heading}</h2>
       <div className="choices">
         <div className="choice">
           <h3 className="choice__heading">You picked</h3>
