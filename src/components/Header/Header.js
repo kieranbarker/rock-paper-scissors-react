@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import logo from '../../images/logo.svg';
 import './Header.css';
 
@@ -14,5 +15,9 @@ function Header({ score }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  score: PropTypes.number.isRequired
+};
 
 export default Header;

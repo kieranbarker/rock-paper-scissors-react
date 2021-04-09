@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import icons from '../../icons';
 import './Results.css';
 
@@ -36,5 +37,12 @@ function Results({ user, computer, result, reset }) {
     </div>
   );
 }
+
+Results.propTypes = {
+  user: PropTypes.string.isRequired,
+  computer: PropTypes.string.isRequired,
+  result: PropTypes.string.isRequired,
+  reset: PropTypes.func.isRequired
+};
 
 export default Results;

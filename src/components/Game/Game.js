@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import icons from '../../icons';
 import './Game.css';
 
@@ -23,5 +24,10 @@ function Game({ choices, decideGame }) {
     </div>
   );
 }
+
+Game.propTypes = {
+  choices: PropTypes.array.isRequired,
+  decideGame: PropTypes.func.isRequired
+};
 
 export default Game;
