@@ -1,10 +1,6 @@
 import React from 'react';
-import rock from '../../images/rock.svg';
-import paper from '../../images/paper.svg';
-import scissors from '../../images/scissors.svg';
+import icons from '../../icons';
 import './Results.css';
-
-const icons = { rock, paper, scissors };
 
 function Results({ user, computer, result, reset }) {
   let heading;

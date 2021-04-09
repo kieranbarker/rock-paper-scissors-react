@@ -73,7 +73,9 @@ class App extends React.Component {
         />
       );
     } else {
-      screen = <Game decideGame={this.decideGame} />;
+      screen = (
+        <Game choices={Object.keys(rules)} decideGame={this.decideGame} />
+      );
     }
 
     return (
