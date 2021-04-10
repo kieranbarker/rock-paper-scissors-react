@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import logo from '../../images/logo.svg';
 import './Header.css';
 
-function Header({ score }) {
+function Header({ score = 0 }) {
   return (
     <header className="header">
       <h1>
@@ -17,7 +17,7 @@ function Header({ score }) {
 }
 
 Header.propTypes = {
-  score: PropTypes.number.isRequired
+  score: PropTypes.number
 };
 
 export default Header;
