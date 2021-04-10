@@ -18,13 +18,13 @@ function Results({ user, computer, result, reset }) {
     <div className="results">
       <h2 className="results__heading">{heading}</h2>
       <div className="choices">
-        <div className="choice">
+        <div className="choice" data-testid="user">
           <h3 className="choice__heading">You picked</h3>
           <div className={`choice__image choice__image--${user}`}>
             <img src={icons[user]} alt={user} />
           </div>
         </div>
-        <div className="choice">
+        <div className="choice" data-testid="computer">
           <h3 className="choice__heading">Computer picked</h3>
           <div className={`choice__image choice__image--${computer}`}>
             <img src={icons[computer]} alt={computer} />
@@ -42,7 +42,7 @@ Results.propTypes = {
   user: PropTypes.string.isRequired,
   computer: PropTypes.string.isRequired,
   result: PropTypes.string.isRequired,
-  reset: PropTypes.func.isRequired
+  reset: PropTypes.func
 };
 
 export default Results;
