@@ -47,7 +47,6 @@ class App extends React.Component {
       newScore = score - 1;
     }
 
-
     this.setState({ user, result, score: newScore });
   }
 
@@ -73,9 +72,7 @@ class App extends React.Component {
         />
       );
     } else {
-      screen = (
-        <Game choices={Object.keys(rules)} decideGame={this.decideGame} />
-      );
+      screen = <Game decideGame={this.decideGame} />;
     }
 
     return (
