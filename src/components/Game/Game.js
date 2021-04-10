@@ -28,7 +28,7 @@ function Game({ decideGame }) {
 }
 
 Game.propTypes = {
-  decideGame: PropTypes.func.isRequired
+  decideGame: PropTypes.func
 };
 
 export default Game;
