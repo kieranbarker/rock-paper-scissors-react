@@ -5,19 +5,13 @@ import Game from '../Game/Game';
 import Results from '../Results/Results';
 import { shuffle } from '../../helpers';
 
-const rules = {
-  rock: 'scissors',
-  paper: 'rock',
-  scissors: 'paper'
-};
-
+const choices = ['rock', 'paper', 'scissors'];
 const storageKey = 'rpsScore';
 
 class App extends React.Component {
   state = {
     user: null,
-    computer: shuffle(Object.keys(rules))[0],
-    result: null,
+    computer: shuffle([...choices])[0],
     score: 0
   }
 
@@ -32,47 +26,33 @@ class App extends React.Component {
     localStorage.setItem(storageKey, this.state.score);
   }
 
-  decideGame = user => {
-    const { computer, score } = this.state;
-    let result, newScore;
-  
-    if (user === computer) {
-      result = 'draw';
-      newScore = score;
-    } else if (rules[user] === computer) {
-      result = 'win';
-      newScore = score + 1;
-    } else {
-      result = 'lose';
-      newScore = score - 1;
-    }
-
-    this.setState({ user, result, score: newScore });
+  makeChoice = choice => {
+    this.setState({ user: choice });
   }
 
-  reset = () => {
+  newGame = score => {
     this.setState({
       user: null,
-      computer: shuffle(Object.keys(rules))[0],
-      result: null
+      computer: shuffle([...choices])[0],
+      score
     });
   }
 
   render() {
-    const { user, computer, result, score } = this.state;
+    const { user, computer, score } = this.state;
     let screen;
 
-    if (result) {
+    if (user) {
       screen = (
         <Results
           user={user}
           computer={computer}
-          result={result}
-          reset={this.reset}
+          score={score}
+          newGame={this.newGame}
         />
       );
     } else {
-      screen = <Game decideGame={this.decideGame} />;
+      screen = <Game choices={choices} makeChoice={this.makeChoice} />;
     }
 
     return (

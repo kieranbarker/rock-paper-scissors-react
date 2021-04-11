@@ -2,12 +2,10 @@ import PropTypes from 'prop-types';
 import icons from '../../icons';
 import './Game.css';
 
-const choices = ['rock', 'paper', 'scissors'];
-
-function Game({ decideGame }) {
+function Game({ choices, makeChoice }) {
   const handleClick = event => {
     const button = event.target.closest('button');
-    decideGame(button.dataset.id);
+    makeChoice(button.dataset.id);
   };
 
   return (
@@ -28,7 +26,8 @@ function Game({ decideGame }) {
 }
 
 Game.propTypes = {
-  decideGame: PropTypes.func
+  choices: PropTypes.array.isRequired,
+  makeChoice: PropTypes.func
 };
 
 export default Game;
