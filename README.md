@@ -1,6 +1,6 @@
 # Rock Paper Scissors
 
-A simple implementation of Rock Paper Scissors in React. I borrowed the design from the challenge on [Frontend Mentor](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH).
+A simple implementation of Rock Paper Scissors in React. I built this for a job interview but I borrowed the design from the challenge on [Frontend Mentor](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
