@@ -1,41 +1,50 @@
 import { render, screen } from '@testing-library/react';
 import Results from './Results';
 
-test('renders win/lose/draw results', () => {
-  // WIN
-
-  const { rerender } = render(
-    <Results user="rock" computer="scissors" result="win" />
-  );
+test('renders win', () => {
+  render(<Results user="rock" computer="scissors" result="win" />);
 
   const heading = screen.getByRole('heading', { level: 2 });
   expect(heading).toHaveTextContent('You Win');
 
   const user = screen.getByTestId('user');
-  expect(user).toContainElement(screen.getByAltText(/rock/i));
+  const rock = screen.getByAltText(/rock/i);
+  expect(user).toContainElement(rock);
 
   const computer = screen.getByTestId('computer');
-  expect(computer).toContainElement(screen.getByAltText(/scissors/i));
+  const scissors = screen.getByAltText(/scissors/i);
+  expect(computer).toContainElement(scissors);
+});
 
-  // LOSE
+test('renders loss', () => {
+  render(<Results user="paper" computer="scissors" result="lose" />);
 
-  rerender(<Results user="scissors" computer="rock" result="lose" />);
-
+  const heading = screen.getByRole('heading', { level: 2 });
   expect(heading).toHaveTextContent('You Lose');
-  expect(user).toContainElement(screen.getByAltText(/scissors/i));
-  expect(computer).toContainElement(screen.getByAltText(/rock/i));
 
-  // DRAW
+  const user = screen.getByTestId('user');
+  const paper = screen.getByAltText(/paper/i);
+  expect(user).toContainElement(paper);
 
-  rerender(<Results user="paper" computer="paper" result="draw" />);
+  const computer = screen.getByTestId('computer');
+  const scissors = screen.getByAltText(/scissors/i);
+  expect(computer).toContainElement(scissors);
+});
 
+test('renders draw', () => {
+  render(<Results user="paper" computer="paper" result="draw" />);
+
+  const heading = screen.getByRole('heading', { level: 2 });
   expect(heading).toHaveTextContent('Draw');
 
   const paperIcons = screen.getAllByAltText(/paper/i);
   expect(paperIcons.length).toBe(2);
 
   const [firstIcon, secondIcon] = paperIcons;
-  expect(user).toContainElement(firstIcon);
-  expect(computer).toContainElement(secondIcon);
 
+  const user = screen.getByTestId('user');
+  expect(user).toContainElement(firstIcon);
+
+  const computer = screen.getByTestId('computer');
+  expect(computer).toContainElement(secondIcon);
 });
