@@ -55,7 +55,9 @@ function App() {
   return (
     <div className="app">
       <Header score={score} />
-      {screen}
+      <main>
+        {screen}
+      </main>
     </div>
   );
 }
