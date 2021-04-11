@@ -4,7 +4,12 @@ import icons from '../../icons';
 import './Results.css';
 
 function Results({ user, computer, score, newGame }) {
-
+  /**
+   * Decide the outcome of the game
+   * @param {String} user The user's choice
+   * @param {String} computer The computer's choice
+   * @returns {String} The outcome (win/lose/draw)
+   */
   const decideGame = (user, computer) => {
     if (user === computer) return 'draw';
     const rules = {
@@ -16,6 +21,9 @@ function Results({ user, computer, score, newGame }) {
     return 'you lose';
   };
 
+  /**
+   * Handle click events
+   */
   const handleClick = () => {
     let newScore;
     if (result === 'draw') {
@@ -28,6 +36,7 @@ function Results({ user, computer, score, newGame }) {
     newGame(newScore);
   };
 
+  // Decide the outcome of the game
   const result = decideGame(user, computer);
 
   return (
@@ -52,7 +61,6 @@ function Results({ user, computer, score, newGame }) {
       </button>
     </div>
   );
-
 }
 
 Results.propTypes = {
