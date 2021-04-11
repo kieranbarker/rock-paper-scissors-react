@@ -43,13 +43,13 @@ function Results({ user, computer, score, newGame }) {
     <article className="results">
       <h2 className="results__heading">{result}</h2>
       <div className="choices">
-        <article className="choice" data-testid="user">
+        <article className="choice">
           <h3 className="choice__heading">You picked</h3>
           <div className={`choice__image choice__image--${user}`}>
             <img src={icons[user]} alt={user} />
           </div>
         </article>
-        <article className="choice" data-testid="computer">
+        <article className="choice">
           <h3 className="choice__heading">Computer picked</h3>
           <div className={`choice__image choice__image--${computer}`}>
             <img src={icons[computer]} alt={computer} />
