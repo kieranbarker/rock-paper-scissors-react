@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Game from '../Game/Game';
@@ -8,60 +8,56 @@ import { shuffle } from '../../helpers';
 const choices = ['rock', 'paper', 'scissors'];
 const storageKey = 'rpsScore';
 
-class App extends React.Component {
-  state = {
-    user: null,
-    computer: shuffle([...choices])[0],
-    score: 0
+function App() {
+  const [user, setUser] = useState(null);
+  const [computer, setComputer] = useState(shuffle([...choices])[0]);
+  const [score, setScore] = useState(0);
+
+  // Which screen to show
+  let screen;
+
+  /**
+   * Start a new game
+   * @param {Number} score The new score after the previous game
+   */
+  function newGame(score) {
+    setUser(null);
+    setComputer(shuffle([...choices])[0]);
+    setScore(score);
   }
 
-  componentDidMount() {
-    let score = localStorage.getItem(storageKey);
-    if (!score) return;
-    score = parseInt(score, 10);
-    this.setState({ score });
-  }
+  // Load the saved score
+  useEffect(() => {
+    let savedScore = localStorage.getItem(storageKey);
+    if (!savedScore) return;
+    setScore(parseInt(savedScore, 10));
+  }, []);
 
-  componentDidUpdate() {
-    localStorage.setItem(storageKey, this.state.score);
-  }
+  // Save the score when it changes
+  useEffect(() => {
+    localStorage.setItem(storageKey, score);
+  }, [score]);
 
-  makeChoice = choice => {
-    this.setState({ user: choice });
-  }
-
-  newGame = score => {
-    this.setState({
-      user: null,
-      computer: shuffle([...choices])[0],
-      score
-    });
-  }
-
-  render() {
-    const { user, computer, score } = this.state;
-    let screen;
-
-    if (user) {
-      screen = (
-        <Results
-          user={user}
-          computer={computer}
-          score={score}
-          newGame={this.newGame}
-        />
-      );
-    } else {
-      screen = <Game choices={choices} makeChoice={this.makeChoice} />;
-    }
-
-    return (
-      <div className="app">
-        <Header score={score} />
-        {screen}
-      </div>
+  // Decide which screen to show
+  if (user) {
+    screen = (
+      <Results
+        user={user}
+        computer={computer}
+        score={score}
+        newGame={newGame}
+      />
     );
+  } else {
+    screen = <Game choices={choices} setUser={setUser} />;
   }
+
+  return (
+    <div className="app">
+      <Header score={score} />
+      {screen}
+    </div>
+  );
 }
 
 export default App;
