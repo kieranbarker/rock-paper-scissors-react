@@ -40,26 +40,26 @@ function Results({ user, computer, score, newGame }) {
   const result = decideGame(user, computer);
 
   return (
-    <div className="results">
+    <article className="results">
       <h2 className="results__heading">{result}</h2>
       <div className="choices">
-        <div className="choice" data-testid="user">
+        <article className="choice" data-testid="user">
           <h3 className="choice__heading">You picked</h3>
           <div className={`choice__image choice__image--${user}`}>
             <img src={icons[user]} alt={user} />
           </div>
-        </div>
-        <div className="choice" data-testid="computer">
+        </article>
+        <article className="choice" data-testid="computer">
           <h3 className="choice__heading">Computer picked</h3>
           <div className={`choice__image choice__image--${computer}`}>
             <img src={icons[computer]} alt={computer} />
           </div>
-        </div>
+        </article>
       </div>
       <button className="play-again" type="button" onClick={handleClick}>
         Play Again
       </button>
-    </div>
+    </article>
   );
 }
 

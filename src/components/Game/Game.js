@@ -13,7 +13,7 @@ function Game({ choices, setUser }) {
   };
 
   return (
-    <div className="game">
+    <article className="game">
       {choices.map(choice => (
         <button
           className={`game__button game__button--${choice}`}
@@ -25,7 +25,7 @@ function Game({ choices, setUser }) {
           <img src={icons[choice]} alt={choice} />
         </button>
       ))}
-    </div>
+    </article>
   );
 }
 
