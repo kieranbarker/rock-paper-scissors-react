@@ -14,11 +14,12 @@
 }
 
 .logo {
+  display: block;
   max-width: 125px;
 }
 
 .score {
-  padding: 1em 1.5em;
+  padding: 1em 2em;
   border-radius: .25em;
   background: #fff;
   flex-direction: column;
@@ -31,10 +32,12 @@
   letter-spacing: 1px;
 }
 
-.score__number {
+.score__results {
+  padding: 0;
+  margin: .5em 0 0;
   color: var(--dark-text);
-  font-size: 2.25em;
-  font-weight: 700;
+  list-style: none;
+  text-transform: capitalize;
 }
 
 @media (min-width: 48em) {
@@ -56,7 +59,7 @@
     letter-spacing: 2px;
   }
 
-  .score__number {
-    font-size: 3em;
+  .score__results {
+    font-size: 1.25em;
   }
 }
