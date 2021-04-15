@@ -9,8 +9,7 @@ test('renders rock, paper, and scissors buttons', () => {
   const buttons = screen.getAllByRole('button');
   expect(buttons.length).toBe(3);
 
-  const [firstButton, secondButton, thirdButton] = buttons;
-  expect(firstButton).toHaveAttribute('data-id', 'rock');
-  expect(secondButton).toHaveAttribute('data-id', 'paper');
-  expect(thirdButton).toHaveAttribute('data-id', 'scissors');
+  choices.forEach((choice, index) => {
+    expect(buttons[index]).toHaveAttribute('data-id', choice);
+  });
 });
